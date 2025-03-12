@@ -1,13 +1,23 @@
-import { getTranslation } from "@/i18n.utils";
+import { BlockRenderer } from "@/components/BlockRenderer";
+import { Locale } from "@/config";
+import { getHomePage } from "@/lib/data/loaders";
 import { LocalizedPage } from "@/lib/types";
+import { notFound } from "next/navigation";
 
+async function loader(locale: Locale) {
+  const data = await getHomePage(locale);
+  if (!data) notFound();
+  return { ...data.data };
+}
 
-const Home : LocalizedPage = async ({params}) => {
+const Home: LocalizedPage = async ({ params }) => {
   const { locale } = await params;
+  const data = await loader(locale);
+  const blocks = data?.blocks || [];
   return (
-      <div className="flex flex-col items-center justify-center text-5xl flex-grow">
-        <div>{getTranslation(locale, "home.title")}</div>
-      </div>
+    <div className="w-full h-full flex flex-col gap-8">
+      <BlockRenderer blocks={blocks} />
+    </div>
   );
 }
 

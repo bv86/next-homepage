@@ -3,20 +3,19 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { i18n, type Locale } from "@/i18n.config";
+import { locales, type Locale } from "@/config";
 
 const inter = Inter({ subsets: ["latin"], display: "swap" });
 
 
 export const metadata: Metadata = {
-  title: "Vannesson.com",
+  title: "Oursi.net",
   description: "Personal website of Benoit Vannesson",
 };
 
 export async function generateStaticParams() {
-  return i18n.locales.map((locale) => ({ locale }));
+  return locales.map((locale) => ({ locale }));
 }
-
 
 export default async function RootLayout(props: Readonly<{
   children: React.ReactNode;
@@ -30,7 +29,7 @@ export default async function RootLayout(props: Readonly<{
         className={`${inter.className} antialiased h-screen`}
       >
         <div className="flex flex-col overflow-x-clip h-full">
-          <Navbar locale={locale}/>
+          <Navbar locale={locale} />
           <main className="flex flex-grow flex-col">
             {children}
           </main>
