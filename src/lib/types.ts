@@ -1,4 +1,4 @@
-import { type Locale } from "@/i18n.config";
+import { type Locale } from "@/config";
 import { type NextPage } from "next/types";
 
 export type LocalizedPage = NextPage<{ params: Promise<{ locale: Locale }> }>;
@@ -40,14 +40,14 @@ interface Base<
 export type Block = HeroSectionProps | InfoBlockProps;
 
 export interface HeroSectionProps extends Base<"blocks.hero-section"> {
-  heading: string;
+  title: string;
   image: ImageProps;
   cta?: LinkProps;
 }
 
 export interface InfoBlockProps extends Base<"blocks.info-block"> {
   reversed?: boolean;
-  headline: string;
+  title: string;
   content: string;
   image: ImageProps;
   cta?: LinkProps;
