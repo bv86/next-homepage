@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { locales, type Locale } from "@/config";
+import { type Locale } from "@/config";
 
 const inter = Inter({ subsets: ["latin"], display: "swap" });
 
@@ -12,10 +12,6 @@ export const metadata: Metadata = {
   title: "Oursi.net",
   description: "Personal website of Benoit Vannesson",
 };
-
-export async function generateStaticParams() {
-  return locales.map((locale) => ({ locale }));
-}
 
 export default async function RootLayout(props: Readonly<{
   children: React.ReactNode;
