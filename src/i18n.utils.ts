@@ -1,5 +1,5 @@
 import "server-only";
-import type { Locale } from "./i18n.config";
+import type { Locale } from "./config";
 import _ from "lodash";
 
 // We enumerate all dictionaries here for better linting and typescript support
@@ -12,7 +12,7 @@ const dictionaries = {
 export const getDictionary = async (locale: Locale) =>
   dictionaries[locale]?.() ?? dictionaries.en();
 
-export const getTranslation = async (locale: Locale, key: string) : Promise<string> => {
+export const getTranslation = async (locale: Locale, key: string): Promise<string> => {
   const dictionary = await getDictionary(locale);
   return _.get(dictionary, key) ?? (locale !== "en" ? getTranslation("en", key) : key);
 }
