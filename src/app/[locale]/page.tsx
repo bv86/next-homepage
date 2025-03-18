@@ -15,10 +15,10 @@ const Home: LocalizedPage = async ({ params }) => {
   const data = await loader(locale);
   const blocks = data?.blocks || [];
   return (
-    <div className="w-full h-full flex flex-col gap-8">
+    <div className="w-full h-full flex flex-col gap-4 md:gap-8 pb-8">
       <BlockRenderer blocks={blocks} />
     </div>
   );
-}
+};
 
 export default Home;
