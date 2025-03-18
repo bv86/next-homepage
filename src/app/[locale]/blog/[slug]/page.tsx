@@ -1,10 +1,9 @@
-import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { BlockRenderer } from "@/components/BlockRenderer";
 import { HeroSection } from "@/components/blocks/HeroSection";
 import { getContentBySlug } from "@/lib/data/loaders";
-import { ArticleProps, Block } from "@/lib/types";
+import { ArticleProps } from "@/lib/types";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
