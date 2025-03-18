@@ -21,19 +21,20 @@ export function ContentCard({
   basePath,
 }: Readonly<ContentCardProps>) {
   return (
-    <Link href={`/${basePath}/${slug}`} className="">
-      <Card className="flex flex-row">
-        <StrapiImage
-          src={image.url}
-          alt={image.alternativeText || "No alternative text provided"}
-          width={400}
-          height={400}
-        />
+    <Link href={`/${basePath}/${slug}`}>
+      <Card className="flex flex-row w-full gap-0">
         <CardContent>
-          <div className="content-items__card-text">
-            <h5>{title}</h5>
-            <p>{description.slice(0, 144)}...</p>
-          </div>
+          <StrapiImage
+            src={image.url}
+            alt={image.alternativeText || "No alternative text provided"}
+            width={200}
+            height={200}
+            className="rounded-2xl"
+          />
+        </CardContent>
+        <CardContent className="flex flex-col gap-2">
+          <h2 className="font-bold text-2xl">{title}</h2>
+          <div>{description.slice(0, 144)}...</div>
         </CardContent>
       </Card>
     </Link>

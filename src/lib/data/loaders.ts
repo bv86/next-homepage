@@ -146,13 +146,6 @@ const blogPopulate = {
           image: {
             fields: ["url", "alternativeText"],
           },
-          logo: {
-            populate: {
-              image: {
-                fields: ["url", "alternativeText"],
-              },
-            },
-          },
           cta: true,
         },
       },
@@ -203,6 +196,6 @@ export async function getContentBySlug(slug: string, path: string) {
       ...blogPopulate,
     },
   });
-
+  console.log("url should be", url.href);
   return fetchAPI(url.href, { method: "GET" });
 }

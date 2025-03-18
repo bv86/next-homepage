@@ -32,9 +32,9 @@ export async function ContentList({
   const Component = component;
 
   return (
-    <section className="flex flex-col gap-8 items-center">
+    <section className="flex flex-col gap-8 items-center px-4">
       {showSearch && <Search />}
-      <div className="content-items__container--card">
+      <div className="w-full flex flex-col gap-4">
         {articles.map((article) => (
           <Component key={article.documentId} {...article} basePath={path} />
         ))}

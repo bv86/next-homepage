@@ -16,7 +16,6 @@ export const metadata: Metadata = {
 async function loader(locale: Locale) {
   const { data } = await getGlobalSettings(locale);
   if (!data) throw new Error("Failed to fetch global settings");
-  console.log("data received", data);
   return { header: data?.header, footer: data?.footer };
 }
 
